@@ -3,11 +3,12 @@
 echo "yay"
 MYDATE=`date -I`
 FILEN="yyt_infos.json"
+PWD=`pwd`
 
 git pull
 
 rm $FILEN
-yytcli getcards -r
+docker run --rm -v $PWD:/data akenaide/yytcli:master getcards -r
 cp `ls -tra | grep yyt | tail -1` $FILEN
 git add $FILEN
 
