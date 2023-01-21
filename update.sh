@@ -8,7 +8,7 @@ PWD=`pwd`
 git pull
 
 rm $FILEN
-docker run --rm -v $PWD:/data akenaide/yytcli:master getcards -r
+docker run --rm --user "$(id -u):$(id -g)" -v $PWD:/data akenaide/yytcli:master getcards -r
 cp `ls -tra | grep yyt | tail -1` $FILEN
 git add $FILEN
 
